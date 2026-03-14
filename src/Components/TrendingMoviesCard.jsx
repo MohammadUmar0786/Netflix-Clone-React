@@ -9,6 +9,7 @@ export default function TrendingMoviesCard({movie}){
                 <div className="p-2 text-center">
                     <h3 className="font-bold">{movie.title}</h3>
                     <p className="text-green-400">{movie.release_date}</p>
+                    <p>⭐ {movie.vote_average?.toFixed(1)}</p>
                 </div>
             </div>
     )

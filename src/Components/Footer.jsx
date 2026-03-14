@@ -1,0 +1,54 @@
+export default function Footer(){
+    const cardStyle = "bg-[#1E172C] p-5 rounded-xl";
+    const h3Style = "text-[24px] mb-3 font-bold";
+    const pStyle = "text-[18px] text-gray-400";
+    return (
+        <div>
+        <h2 className="w-[80%] container mx-auto mb-7 text-3xl font-bold text-white">More reasons to join</h2>
+        <div className="text-white flex gap-5 mb-30 w-[80%] container mx-auto">
+
+            <div className={cardStyle}>
+                <div>
+                    <h3 className={h3Style}>
+                        Enjoy on your TV
+                    </h3>
+                </div>
+                <div>
+                    <p className={pStyle}>
+                        Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.
+                    </p>
+                </div>
+            </div>
+
+            <div className={cardStyle}>
+                <div>
+                    <h3 className={h3Style}>
+                        Download your shows to watch offline
+                    </h3>
+                </div>
+                <div>
+                    <p className={pStyle} >Save your favourites easily and always have something to watch.</p>
+                </div>
+            </div>
+
+            <div className={cardStyle}>
+                <div>
+                    <h3 className={h3Style}>Watch everywhere</h3>
+                </div>
+                <div>
+                    <p className={pStyle}>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+                </div>
+            </div>
+
+            <div className={cardStyle}>
+                <div>
+                    <h3  className={h3Style}>Create profiles for kids</h3>
+                </div>
+                <div>
+                    <p className={pStyle}>Send kids on adventures with their favourite characters in a space made just for them — free with your membership.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    )
+}
