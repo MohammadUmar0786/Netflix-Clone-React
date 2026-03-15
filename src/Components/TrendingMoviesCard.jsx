@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom"
+
 export default function TrendingMoviesCard({movie}){
+
+    const navigate = useNavigate();
+
     return(
-            <div className="flex-none text-white">
+            <div className="flex-none text-white"
+            onClick={()=>navigate(`/movie/${movie.id}`)}>
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className="rounded-lg w-40 h-50 object-cover"
