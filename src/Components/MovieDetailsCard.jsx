@@ -1,3 +1,18 @@
+const platformLinks = {
+  Netflix: "https://www.netflix.com",
+  "Amazon Prime Video": "https://www.primevideo.com",
+  "Amazon Video": "https://www.primevideo.com", // ✅ IMPORTANT FIX
+  "Disney Plus Hotstar": "https://www.hotstar.com/in",
+  Hotstar: "https://www.hotstar.com/in",
+  "Apple TV": "https://tv.apple.com",
+  Zee5: "https://www.zee5.com",
+  SonyLiv: "https://www.sonyliv.com",
+  "Google Play Movies": "https://play.google.com/store/movies",
+  YouTube: "https://www.youtube.com",
+  "MX Player": "https://www.mxplayer.in",
+  "JioCinema": "https://www.jiocinema.com"
+};
+
 export default function MovieDetailsCard({ movie, videos, credits, providers }) {
   
   console.log(providers);  
@@ -8,8 +23,19 @@ export default function MovieDetailsCard({ movie, videos, credits, providers }) 
   const director = credits?.crew?.find(
     (person) => person.job === "Director"
   );
+  
+  const providerData =
+  providers?.IN ||
+  providers?.US ||
+  providers?.GB ||
+  Object.values(providers || {})[0];
 
-  const indiaProviders = providers?.IN?.flatrate;
+const firstProvider =
+  providerData?.flatrate?.[0] ||
+  providerData?.rent?.[0] ||
+  providerData?.buy?.[0];
+
+const watchLink = platformLinks[firstProvider?.provider_name] || "https://www.justwatch.com/in";
 
   return (
     <div
@@ -29,26 +55,16 @@ export default function MovieDetailsCard({ movie, videos, credits, providers }) 
           />
 
           {/* Watch Button */}
-          <button className="mt-4 w-full bg-red-600 py-3 rounded-lg font-semibold hover:bg-red-700">
-            Watch Now
-          </button>
-
-          {indiaProviders && (
-    <div className="mt-4 flex flex-wrap gap-2">
-
-      {indiaProviders.map((p)=>(
-        <a
-          key={p.provider_id}
-          href="https://www.google.com/search?q=watch+movie+online"
-          target="_blank"
-          className="bg-gray-800 px-3 py-2 rounded text-sm"
-        >
-          Watch on {p.provider_name}
-        </a>
-      ))}
-
-    </div>
-  )}
+          {watchLink && (
+  <a
+    href={watchLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block mt-4 w-full bg-red-600 py-3 rounded-lg font-semibold text-center hover:bg-red-700"
+  >
+    Watch Now
+  </a>
+)}
 
         </div>
 
