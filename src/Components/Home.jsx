@@ -1,6 +1,7 @@
 import Header from "./Header";
 import TrendingMoviesInfo from "./TrendingMoviesInfo";
 import TopRatedMoviesInfo from "./TopRatedMoviesInfo";
+import DiscoverMovies from "./DiscoverMovies";
 import Footer from "./Footer";
 
 export default function Home(){
@@ -9,6 +10,7 @@ export default function Home(){
         <Header></Header>
         <TrendingMoviesInfo></TrendingMoviesInfo>
         <TopRatedMoviesInfo></TopRatedMoviesInfo>
+        <DiscoverMovies></DiscoverMovies>
         <Footer></Footer>
         </>
     )

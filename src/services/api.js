@@ -38,3 +38,9 @@ export const fetchWatchProviders = (id)=>{
         `${BASE_URL}/movie/${id}/watch/providers?api_key=${API_KEY}`
     );
 };
+
+export const fetchAllMovies = () => {
+    return axios.get(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}`
+    );
+};

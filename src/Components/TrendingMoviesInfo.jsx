@@ -7,7 +7,7 @@ export default function TrendingMoviesInfo(){
     const [movies,setMovies] = useState([]);
 
     useEffect(()=>{
-        //console.log("useEffect running")
+        console.log("useEffect running")
         fetchTrending().then((res)=>{
             //console.log(res.data.results);
             setMovies(res.data.results);
