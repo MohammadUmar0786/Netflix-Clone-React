@@ -16,7 +16,7 @@ export default function DiscoverMoviesCard({ movie }) {
 
       <div className="p-2 text-center flex flex-col">
         <h3 className="font-semibold line-clamp-2">{movie.title}</h3>
-        <p className="text-red-400">
+        <p className="text-green-400">
           {new Date(movie.release_date).getFullYear()}
         </p>
         {movie.vote_average === 0 ? (

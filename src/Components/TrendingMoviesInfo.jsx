@@ -16,7 +16,7 @@ export default function TrendingMoviesInfo(){
     },[]);
 
     return(
-        <div className="mt-25 mb-30">
+        <div className="mt-25 mb-20">
         <h2 className="w-[80%] container mx-auto mb-7 text-3xl font-bold text-white" >Trending Now</h2>
         <div className="w-[80%] container mx-auto flex flex-nowrap overflow-x-auto gap-5 hide-scrollbar">
             {

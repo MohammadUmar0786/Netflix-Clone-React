@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 const API_KEY = "8ad8fefc1072219fdd3f83cbe7d59c47";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -39,8 +39,14 @@ export const fetchWatchProviders = (id)=>{
     );
 };
 
-export const fetchAllMovies = () => {
+export const fetchDiscoverMovies= () => {
     return axios.get(
         `${BASE_URL}/discover/movie?api_key=${API_KEY}`
+    );
+};
+
+export const fetchSearchMovies = (query)=>{
+    return axios.get(
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
     );
 };

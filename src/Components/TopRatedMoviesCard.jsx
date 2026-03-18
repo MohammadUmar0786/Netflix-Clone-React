@@ -5,7 +5,7 @@ export default function TopRatedMoviesCard({movie}) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex-none text-white"
+    <div className="flex-none text-white w-40 cursor-pointer"
     onClick={()=>navigate(`/movie/${movie.id}`)}>
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -15,8 +15,12 @@ export default function TopRatedMoviesCard({movie}) {
 
       <div className="p-2 text-center">
         <h3 className="font-bold">{movie.title}</h3>
-        <p className="text-green-400">{movie.release_date}</p>
-        <p>⭐ {movie.vote_average?.toFixed(1)}</p>
+        <p className="text-green-400">{new Date(movie.release_date).getFullYear()}</p>
+        {movie.vote_average === 0 ? (
+          <p className="text-yellow-400">New</p>
+        ) : (
+          <p className="mt-auto">⭐ {movie.vote_average?.toFixed(1)}</p>
+        )}
       </div>
     </div>
   );
