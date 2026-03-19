@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { fetchSearchMovies } from "../services/api";
 import SkeletonCardHomePage from "./SkeletonCardHomePage";
 import DiscoverMoviesCard from "./DiscoverMoviesCard";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchMovies() {
-  // searched value state manage
+
+  const navigate = useNavigate();
+  
   const [query, setQuery] = useState("");
 
   // result value state manage
@@ -15,7 +18,7 @@ export default function SearchMovies() {
 
   // useState+debouncing
   useEffect(() => {
-    if (!query) {
+    if (query.length < 2) {
       setResult([]); // clear results when empty
       return;
     }
@@ -24,7 +27,7 @@ export default function SearchMovies() {
       setLoading(true); // loading started (shimmer effect)
 
       fetchSearchMovies(query) // API fn input query data passed
-        .then((res) => setResult(res.data.results)) // promise handling started
+        .then((res) => setResult(res?.data?.results || [])) // promise handling started
         .catch((err) => console.log(err)) // err handle
         .finally(() => setLoading(false)); // after result loading stopped (shimmer effect)
     }, 800); //  waits for sometime for each character type
@@ -32,28 +35,39 @@ export default function SearchMovies() {
   }, [query]);
 
   return (
+
+    
     <div className="p-6 text-white mt-5">
-      <div className="flex items-center gap-2 mb-6 max-w-xl mx-auto">
-        {/* Search input */}
-        <input
-          className="px-4 py-2 bg-gray-800 rounded w-full outline-none"
-          type="text"
-          placeholder="Search movies..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        ></input>
 
-        {/* Clear Button */}
-        {query && (
-          <button
-            onClick={() => setQuery("")}
-            className="bg-white px-3 py-1 rounded"
-          >
-            ❌
-          </button>
-        )}
-        </div>
+         {/* Back Button (top-right corner) */}
+    <div className="flex justify-end mb-4">
+      <button
+        onClick={() => navigate("/")}
+        className="text-white font-bold bg-red-700 px-3 py-2 rounded hover:bg-red-800"
+      >
+       Home
+      </button>
+    </div>
 
+      {/* 🔍 ADD HERE (Search Input) */}
+    <div className="flex items-center gap-2 mb-6 max-w-xl mx-auto">
+      <input
+        className="px-4 py-2 bg-gray-800 rounded w-full outline-none"
+        placeholder="Search movies..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+
+      {query && (
+        <button
+          onClick={() => setQuery("")}
+          className="bg-white text-black px-3 py-1 rounded"
+        >
+          ❌
+        </button>
+      )}
+    </div>
+      
       {/* Results Section */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {loading ? (
@@ -67,7 +81,7 @@ export default function SearchMovies() {
 
       {/* Empty State */}
       {!loading && result.length === 0 && query && (
-        <p className="text-gray-400 mt-4 text-centre">No results found</p>
+        <p className="text-gray-400 mt-4 text-center">No results found</p>
       )}
     </div>
   );
