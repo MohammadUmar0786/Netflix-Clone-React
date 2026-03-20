@@ -1,13 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import AddToFav from "./AddToFav";
 
 export default function TrendingMoviesCard({ movie }) {
   const navigate = useNavigate();
 
   return (
     <div
-      className="flex-none text-white w-40 cursor-pointer"
+      className="flex-none text-white w-40 cursor-pointer relative"
       onClick={() => navigate(`/movie/${movie.id}`)}
     >
+
+    {/* ❤️ Favorite Button */}
+    <div onClick={(e) => e.stopPropagation()}>
+      <AddToFav movie={movie} />
+    </div>
+
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}

@@ -1,3 +1,4 @@
+import Navbar from "./Navbar";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import TrendingMoviesInfo from "./TrendingMoviesInfo";
@@ -9,6 +10,7 @@ import Footer from "./Footer";
 export default function Home(){
     return(
         <>
+        <Navbar></Navbar>
         <Header></Header>
         <SearchBar></SearchBar>
         <TrendingMoviesInfo></TrendingMoviesInfo>

@@ -16,9 +16,9 @@ export default function TopRatedMoviesInfo(){
     },[]);
 
     return(
-        <div className="mt-15 mb-15">
+        <div className="mt-16 mb-16 px-4 sm:px-6 md:px-8">
             <h2 className="w-[80%] container mx-auto mb-7 text-3xl font-bold text-white">Top Rated Movies</h2>
-            <div className="w-[80%] container mx-auto flex flex-nowrap overflow-x-auto gap-5 hide-scrollbar">
+            <div className="w-[80%] container mx-auto flex flex-nowrap overflow-x-auto gap-5 hide-scrollbar-lg">
                 {
                     movies.map((movie)=>{
                         return <TopRatedMoviesCard key={movie.id} movie={movie}/>

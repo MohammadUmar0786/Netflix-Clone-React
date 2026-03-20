@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 export default function FilteredOptions({ movies, setMovies, originalMovies }) {
   //  console.log("movies:", movies)
@@ -63,7 +63,7 @@ export default function FilteredOptions({ movies, setMovies, originalMovies }) {
   };
 
   return (
-    <div className="flex items-center gap-3 relative text-white">
+    <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 relative text-white">
       {/* Top Rated */}
       <button
         onClick={handleRating}

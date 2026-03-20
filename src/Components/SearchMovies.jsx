@@ -5,9 +5,8 @@ import DiscoverMoviesCard from "./DiscoverMoviesCard";
 import { useNavigate } from "react-router-dom";
 
 export default function SearchMovies() {
-
   const navigate = useNavigate();
-  
+
   const [query, setQuery] = useState("");
 
   // result value state manage
@@ -35,39 +34,36 @@ export default function SearchMovies() {
   }, [query]);
 
   return (
-
-    
     <div className="p-6 text-white mt-5">
-
-         {/* Back Button (top-right corner) */}
-    <div className="flex justify-end mb-4">
-      <button
-        onClick={() => navigate("/")}
-        className="text-white font-bold bg-red-700 px-3 py-2 rounded hover:bg-red-800"
-      >
-       Home
-      </button>
-    </div>
+      {/* Back Button (top-right corner) */}
+      <div className="px-4 pt-4 mb-10 relative z-10">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-white text-sm px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-md border border-zinc-700 hover:bg-zinc-800 transition shadow"
+        >
+          ← Back
+        </button>
+      </div>
 
       {/* 🔍 ADD HERE (Search Input) */}
-    <div className="flex items-center gap-2 mb-6 max-w-xl mx-auto">
-      <input
-        className="px-4 py-2 bg-gray-800 rounded w-full outline-none"
-        placeholder="Search movies..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <div className="flex items-center gap-2 mb-6 max-w-xl mx-auto">
+        <input
+          className="px-4 py-2 bg-gray-800 rounded w-full outline-none"
+          placeholder="Search movies..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
 
-      {query && (
-        <button
-          onClick={() => setQuery("")}
-          className="bg-white text-black px-3 py-1 rounded"
-        >
-          ❌
-        </button>
-      )}
-    </div>
-      
+        {query && (
+          <button
+            onClick={() => setQuery("")}
+            className="bg-white text-black px-3 py-1 rounded"
+          >
+            ❌
+          </button>
+        )}
+      </div>
+
       {/* Results Section */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {loading ? (

@@ -122,6 +122,8 @@ const watchLink = platformLinks[firstProvider?.provider_name] || "https://www.ju
 
         </div>
       </div>
+      
+
     </div>
   );
 }

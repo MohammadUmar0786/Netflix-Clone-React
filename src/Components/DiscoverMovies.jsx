@@ -31,7 +31,7 @@ export default function DiscoverMovies() {
   }, []);
 
   return (
-    <div className="mt-15 mb-20">
+    <div className="mt-16 mb-16 px-4 sm:px-6 md:px-8">
       {/* Heading + Filters (same row) */}
       <div className="w-[80%] container mx-auto mb-7 flex items-baseline gap-6">
         <h2 className="text-3xl font-bold text-white">Discover Movies</h2>
