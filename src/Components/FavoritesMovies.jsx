@@ -5,21 +5,21 @@ import { useNavigate } from "react-router-dom";
 export default function favouriteMovies() {
 
   const navigate = useNavigate();
-  const [favourite, setfavourite] = useState([]);
+  const [favourites, setfavourite] = useState([]);
 
   // 📌 Load favourite from localStorage
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("favourite")) || [];
+    const data = JSON.parse(localStorage.getItem("favourites")) || [];
     setfavourite(data);
   }, []);
 
   return (
-    <div className="p-6 text-white">
+    <div className="p-4 sm:p-6 text-white min-h-screen">
 
-       <div className="px-4 pt-4 mb-10 relative z-10">
+      <div className="mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-white text-sm px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-md border border-zinc-700 hover:bg-zinc-800 transition shadow"
+          className="flex items-center gap-2 text-white text-sm px-3 sm:px-4 py-2 rounded-full bg-zinc-900/80 backdrop-blur-md border border-zinc-700 hover:bg-zinc-800 transition shadow"
         >
           ← Back
         </button>
@@ -27,20 +27,20 @@ export default function favouriteMovies() {
 
       
       {/* 🔥 Heading */}
-      <h2 className="text-4xl mb-6 text-center">
-        ❤️ Your Favourite Movies
+      <h2 className="text-3xl sm:text-4xl mb-12 text-center">
+        ❤️ Your Favourites Movies
       </h2>
 
       {/* ❌ Empty State */}
-      {favourite.length === 0 ? (
-        <p className="text-gray-400 text-center text-2xl mt-20">
+      {favourites.length === 0 ? (
+        <p className="text-gray-400 text-center text-lg sm:text-2xl mt-20">
           No favourite movies added yet
         </p>
       ) : (
         
         /* ✅ Movies Grid */
-        <div className="w-[80%] container mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-          {favo.map((movie) => (
+        <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5">
+          {favourites.map((movie) => (
             <DiscoverMoviesCard key={movie.id} movie={movie} />
           ))}
         </div>

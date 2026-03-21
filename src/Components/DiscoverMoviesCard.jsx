@@ -6,7 +6,8 @@ export default function DiscoverMoviesCard({ movie }) {
 
   return (
     <div
-      className=" flex flex-col text-white cursor-pointer relative"
+      className="flex flex-col text-white cursor-pointer relative overflow-hidden rounded-lg
+                transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl active:scale-95"
       onClick={() => navigate(`/movie/${movie.id}`)}
     >
       {/* ❤️ Favorite Button */}
