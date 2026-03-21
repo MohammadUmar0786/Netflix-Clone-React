@@ -28,7 +28,7 @@ export default function favouriteMovies() {
       
       {/* 🔥 Heading */}
       <h2 className="text-3xl sm:text-4xl mb-12 text-center">
-        ❤️ Your Favourites Movies
+        ❤️ Your Favourite Movies
       </h2>
 
       {/* ❌ Empty State */}
