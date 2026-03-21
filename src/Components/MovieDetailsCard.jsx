@@ -44,14 +44,14 @@ const watchLink = platformLinks[firstProvider?.provider_name] || "https://www.ju
         backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
       }}
     >
-      <div className="min-h-screen flex items-center px-20 gap-12 bg-gradient-to-r from-black via-black/80 to-transparent">
+      <div className="min-h-screen flex flex-col md:flex-row items-start md:items-center px-4 sm:px-6 md:px-20 gap-6 md:gap-12 bg-gradient-to-r from-black via-black/80 to-transparent">
 
         {/* LEFT POSTER */}
-        <div className="w-[300px] flex-shrink-0">
+        <div className="flex-shrink-0 w-full sm:w-72 md:w-72 overflow-hidden rounded-lg shadow-lg">
 
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            className="rounded-lg shadow-lg"
+            className="w-full transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 cursor-pointer"
           />
 
           {/* Watch Button */}
@@ -69,10 +69,10 @@ const watchLink = platformLinks[firstProvider?.provider_name] || "https://www.ju
         </div>
 
         {/* RIGHT CONTENT */}
-        <div className="max-w-3xl">
+        <div className="flex-1 max-w-full md:max-w-3xl">
 
           {/* TITLE */}
-          <h1 className="text-5xl font-bold">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             {movie.title}{" "}
             <span className="text-gray-300">
               ({movie.release_date?.slice(0, 4)})
@@ -80,12 +80,12 @@ const watchLink = platformLinks[firstProvider?.provider_name] || "https://www.ju
           </h1>
 
           {/* GENRES */}
-          <p className="mt-2 text-gray-300">
+          <p className="mt-2 text-gray-300 text-sm sm:text-base">
             {movie.genres?.map((g) => g.name).join(" • ")}
           </p>
 
           {/* RATING */}
-          <div className="flex items-center gap-3 mt-4">
+          <div className="flex items-center gap-3 mt-4 text-sm sm:text-base">
             ⭐ {movie.vote_average?.toFixed(1)}
             <span className="text-gray-400"> Movie Rating</span>
           </div>
@@ -95,28 +95,28 @@ const watchLink = platformLinks[firstProvider?.provider_name] || "https://www.ju
             <a
               href={`https://www.youtube.com/watch?v=${trailer.key}`}
               target="_blank"
-              className="inline-block mt-4 bg-white text-black px-6 py-2 rounded-full font-semibold"
+              className="inline-block mt-4 bg-white text-black px-4 sm:px-6 py-2 rounded-full font-semibold text-sm sm:text-base"
             >
               ▶ Play Trailer
             </a>
           )}
 
           {/* TAGLINE */}
-          <p className="italic text-gray-300 mt-6">
+          <p className="italic text-gray-300 mt-4 text-sm sm:text-base">
             {movie.tagline}
           </p>
 
           {/* OVERVIEW */}
-          <h2 className="mt-6 text-xl font-semibold">Overview</h2>
-          <p className="text-gray-300 mt-2">
+          <h2 className="mt-6 text-xl sm:text-2xl font-semibold">Overview</h2>
+          <p className="text-gray-300 mt-2 text-sm sm:text-base">
             {movie.overview}
           </p>
 
           {/* DIRECTOR */}
           {director && (
-            <div className="mt-6">
+            <div className="mt-6 text-sm sm:text-base">
               <p className="font-semibold">{director.name}</p>
-              <p className="text-gray-400 text-sm">Director</p>
+              <p className="text-gray-400 mb-2">Director</p>
             </div>
           )}
 
